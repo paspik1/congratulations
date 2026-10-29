@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Влад | Веб-разработчик</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+}
+
+header{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.avatar{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #38bdf8;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:3rem;
+}
+
+p{
+    color:#cbd5e1;
+}
+
+.btn{
+    margin-top:25px;
+    padding:14px 28px;
+    background:#38bdf8;
+    color:black;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+section{
+    padding:70px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.section-title{
+    font-size:2rem;
+    margin-bottom:30px;
+    text-align:center;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+}
+
+.card img{
+    width:100%;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+footer{
+    padding:30px;
+    text-align:center;
+    background:#020617;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact a{
+    color:#38bdf8;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="https://via.placeholder.com/150" class="avatar">
+    <h1>Влад</h1>
+    <p>Начинающий веб-разработчик</p>
+    <a href="#projects" class="btn">Мои работы</a>
+</header>
+
+<section>
+    <h2 class="section-title">Обо мне</h2>
+    <p style="text-align:center">
+        Создаю современные сайты для телефонов и компьютеров.
+        Изучаю HTML, CSS и JavaScript.
+        Делаю красивые лендинги, сайты-поздравления и портфолио.
+    </p>
+</section>
+
+<section id="projects">
+    <h2 class="section-title">Проекты</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://picsum.photos/400/250?1">
+            <h3>Сайт-поздравление</h3>
+            <p>Красивый сайт с фотографиями и анимациями.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/400/250?2">
+            <h3>Портфолио</h3>
+            <p>Персональный сайт для демонстрации работ.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/400/250?3">
+            <h3>Лендинг</h3>
+            <p>Одностраничный сайт для бизнеса.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="contact">
+    <h2 class="section-title">Контакты</h2>
+    <p>Telegram: @your_username</p>
+    <p>Email: yourmail@gmail.com</p>
+</section>
+
+<footer>
+    © 2026 Влад | Веб-разработчик
+</footer>
+
+</body>
+</html>
