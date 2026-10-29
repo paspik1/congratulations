@@ -3,19 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Влад | Веб-разработчик</title>
+<title>Паспик | Веб-разработчик</title>
 
 <style>
+
+:root{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#ffffff;
+    --accent:#38bdf8;
+}
+
+.light{
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --text:#0f172a;
+    --accent:#0ea5e9;
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:"Segoe UI",sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#0f172a;
-    color:white;
+    background:linear-gradient(135deg,#020617,#0f172a);
+    color:var(--text);
+    transition:.4s;
+}
+
+.light body{
+    background:#f8fafc;
+}
+
+.theme-btn{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:100;
+    border:none;
+    cursor:pointer;
+    background:var(--accent);
+    color:#fff;
+    padding:12px 18px;
+    border-radius:12px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.theme-btn:hover{
+    transform:scale(1.05);
 }
 
 header{
@@ -29,141 +72,437 @@ header{
 }
 
 .avatar{
-    width:150px;
-    height:150px;
+    width:180px;
+    height:180px;
     border-radius:50%;
     object-fit:cover;
-    border:4px solid #38bdf8;
-    margin-bottom:20px;
+    border:5px solid var(--accent);
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-15px);
+    }
+    100%{
+        transform:translateY(0);
+    }
 }
 
 h1{
-    font-size:3rem;
+    margin-top:20px;
+    font-size:4rem;
+
+    background:linear-gradient(
+        90deg,
+        #38bdf8,
+        #818cf8,
+        #38bdf8
+    );
+
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:gradientMove 4s linear infinite;
 }
 
-p{
-    color:#cbd5e1;
+@keyframes gradientMove{
+    to{
+        background-position:200% center;
+    }
+}
+
+.subtitle{
+    margin-top:15px;
+    font-size:1.2rem;
+    color:#94a3b8;
+    min-height:40px;
+}
+
+#typing::after{
+    content:"|";
+    color:var(--accent);
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
 }
 
 .btn{
-    margin-top:25px;
-    padding:14px 28px;
-    background:#38bdf8;
-    color:black;
+    margin-top:30px;
+    display:inline-block;
     text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-    transition:0.3s;
+    background:var(--accent);
+    color:white;
+    padding:15px 35px;
+    border-radius:14px;
+    font-weight:700;
+    transition:.3s;
 }
 
 .btn:hover{
-    transform:scale(1.05);
+    transform:scale(1.08);
+    box-shadow:0 0 30px rgba(56,189,248,.5);
 }
 
 section{
-    padding:70px 20px;
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
+    padding:80px 20px;
 }
 
 .section-title{
-    font-size:2rem;
-    margin-bottom:30px;
     text-align:center;
+    margin-bottom:40px;
+    font-size:2.3rem;
+}
+
+.about{
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+    font-size:1.1rem;
+    line-height:1.7;
 }
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
 }
 
 .card{
-    background:#1e293b;
-    padding:20px;
-    border-radius:15px;
+    background:var(--card);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
 
 .card img{
     width:100%;
-    border-radius:10px;
-    margin-bottom:15px;
+    display:block;
+}
+
+.card-content{
+    padding:20px;
 }
 
 .card h3{
     margin-bottom:10px;
 }
 
-footer{
-    padding:30px;
-    text-align:center;
-    background:#020617;
+.skills{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.skill{
+    background:var(--card);
+    padding:12px 20px;
+    border-radius:50px;
 }
 
 .contact{
     text-align:center;
 }
 
+.contact p{
+    margin:10px 0;
+}
+
 .contact a{
-    color:#38bdf8;
+    color:var(--accent);
     text-decoration:none;
 }
+
+footer{
+    text-align:center;
+    padding:40px;
+    opacity:.7;
+}
+
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.8rem;
+    }
+
+    .avatar{
+        width:140px;
+        height:140px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
+<button class="theme-btn" onclick="toggleTheme()">
+🌙 Тема
+</button>
+
 <header>
-    <img src="https://faunistics.com/wp-content/uploads/2019/05/1-8.jpg" class="avatar">
-    <h1>Влад</h1>
-    <p>Начинающий веб-разработчик</p>
-    <a href="#projects" class="btn">Мои работы</a>
+
+<img
+src="https://avatars.githubusercontent.com/u/9919?v=4"
+alt="Фото"
+class="avatar">
+
+<h1>Влад</h1>
+
+<p class="subtitle">
+<span id="typing"></span>
+</p>
+
+<a href="#projects" class="btn">
+Мои работы
+</a>
+
 </header>
 
-<section>
-    <h2 class="section-title">Обо мне</h2>
-    <p style="text-align:center">
-        Создаю современные сайты для телефонов и компьютеров.
-        Изучаю HTML, CSS и JavaScript.
-        Делаю красивые лендинги, сайты-поздравления и портфолио.
-    </p>
+<section class="hidden">
+
+<h2 class="section-title">
+Обо мне
+</h2>
+
+<div class="about">
+Привет! Я начинающий веб-разработчик.
+Создаю современные адаптивные сайты для телефонов и компьютеров.
+Изучаю HTML, CSS и JavaScript и постоянно развиваю свои навыки.
+</div>
+
+</section>
+
+<section class="hidden">
+
+<h2 class="section-title">
+Навыки
+</h2>
+
+<div class="skills">
+
+<div class="skill">HTML5</div>
+
+<div class="skill">CSS3</div>
+
+<div class="skill">JavaScript</div>
+
+<div class="skill">GitHub Pages</div>
+
+<div class="skill">Responsive Design</div>
+
+</div>
+
 </section>
 
 <section id="projects">
-    <h2 class="section-title">Проекты</h2>
 
-    <div class="cards">
+<h2 class="section-title hidden">
+Проекты
+</h2>
 
-        <div class="card">
-            <img src="https://picsum.photos/400/250?1">
-            <h3>Сайт-поздравление</h3>
-            <p>Красивый сайт с фотографиями и анимациями.</p>
-        </div>
+<div class="cards">
 
-        <div class="card">
-            <img src="https://picsum.photos/400/250?2">
-            <h3>Портфолио</h3>
-            <p>Персональный сайт для демонстрации работ.</p>
-        </div>
+<div class="card hidden">
 
-        <div class="card">
-            <img src="https://picsum.photos/400/250?3">
-            <h3>Лендинг</h3>
-            <p>Одностраничный сайт для бизнеса.</p>
-        </div>
+<img src="https://picsum.photos/600/350?1">
 
-    </div>
+<div class="card-content">
+<h3>Сайт-поздравление</h3>
+<p>
+Красивый сайт для дня рождения с фотографиями,
+музыкой и анимациями.
+</p>
+</div>
+
+</div>
+
+<div class="card hidden">
+
+<img src="https://picsum.photos/600/350?2">
+
+<div class="card-content">
+<h3>Персональное портфолио</h3>
+<p>
+Современный адаптивный сайт разработчика.
+</p>
+</div>
+
+</div>
+
+<div class="card hidden">
+
+<img src="https://picsum.photos/600/350?3">
+
+<div class="card-content">
+<h3>Лендинг</h3>
+<p>
+Одностраничный продающий сайт для бизнеса.
+</p>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<section class="contact">
-    <h2 class="section-title">Контакты</h2>
-    <p>Telegram: @vladrolton</p>
-    <p>Email: vpaspik@mail.ru</p>
+<section class="contact hidden">
+
+<h2 class="section-title">
+Контакты
+</h2>
+
+<p>
+Telegram:
+<a href="#">
+@vladrolton
+</a>
+</p>
+
+<p>
+GitHub:
+<a href="#">
+github.com/paspik
+</a>
+</p>
+
+<p>
+Email:
+<a href="#">
+vpaspik@mail.ru
+</a>
+</p>
+
 </section>
 
 <footer>
-    © 2026 Влад | Веб-разработчик
+© 2026 Паспик • Web Developer
 </footer>
+
+<script>
+
+// Переключатель темы
+
+function toggleTheme(){
+    document.documentElement.classList.toggle("light");
+}
+
+// Анимация появления
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll(".hidden").forEach(el=>{
+    observer.observe(el);
+});
+
+// Печатающийся текст
+
+const texts = [
+    "Создаю современные сайты",
+    "Разрабатываю адаптивные проекты",
+    "Изучаю HTML, CSS и JavaScript",
+    "Открыт для первых заказов 🚀"
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const typingElement =
+document.getElementById("typing");
+
+function typeEffect(){
+
+    const currentText = texts[textIndex];
+
+    if(!deleting){
+
+        typingElement.textContent =
+        currentText.substring(0,charIndex+1);
+
+        charIndex++;
+
+        if(charIndex === currentText.length){
+
+            deleting = true;
+
+            setTimeout(
+                typeEffect,
+                2000
+            );
+
+            return;
+        }
+
+    }else{
+
+        typingElement.textContent =
+        currentText.substring(
+            0,
+            charIndex-1
+        );
+
+        charIndex--;
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            textIndex++;
+
+            if(textIndex >= texts.length){
+                textIndex = 0;
+            }
+
+        }
+
+    }
+
+    setTimeout(
+        typeEffect,
+        deleting ? 50 : 100
+    );
+}
+
+typeEffect();
+
+</script>
 
 </body>
 </html>
